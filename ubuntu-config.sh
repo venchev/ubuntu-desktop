@@ -13,7 +13,7 @@ sleep 10
 
 
 PS3='Please enter your choice: '
-options=("Installation of Basic utilities." "Installation of Face Recognition on this Linux Box." "Installation of Remote Access to this box via NX and SSH." "Adding Power Management for hardware computers. Don't use in VMs" "Quit")
+options=("Installation of Basic utilities." "Installation of Face Recognition on this Linux Box." "Installation of Remote Access to this box via NX and SSH." "Adding Power Management - not for VMs" "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -81,7 +81,7 @@ do
             echo Installing of gnome-tweaks tool.
             sudo apt install -y gnome-tweaks
             ;;
-        "Adding Power Management for hardware computers. Don't use in VMs"
+        "Adding Power Management - not for VMs")
             echo Installing of auto-cpufreq tool for power management.
             snap install auto-cpufreq
             sudo auto-cpufreq --install
