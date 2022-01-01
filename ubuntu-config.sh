@@ -10,29 +10,14 @@ echo Adding 15 seconds before activation of the script...
 echo
 echo
 sleep 15
-HEIGHT=15
-WIDTH=40
-CHOICE_HEIGHT=4
-BACKTITLE="Backtitle here"
-TITLE="Title here"
 
-MENU="Choose one of the following options:" 
-            
-OPTIONS=(1 "Installation of Basic utilities."
-         2 "Installation of Face Recognition on this Linux Box."
-         3 "Installation of Remote Access to this box via NX and SSH.")
 
-CHOICE=$(dialog --clear \
-                --backtitle "$BACKTITLE" \
-                --title "$TITLE" \
-                --menu "$MENU" \
-                $HEIGHT $WIDTH $CHOICE_HEIGHT \
-                "${OPTIONS[@]}" \
-                2>&1 >/dev/tty)
-
-clear
-case $CHOICE in
-        1)
+PS3='Please enter your choice: '
+options=("Installation of Basic utilities." "Installation of Face Recognition on this Linux Box." "Installation of Remote Access to this box via NX and SSH." "Quit")
+select opt in "${options[@]}"
+do
+    case $opt in
+        "Installation of Basic utilities.")
             echo "Basic Utilities...preparing of the install process."
             sudo mkdir -p $HOME:/temp/
             cd $HOME:/temp/
@@ -98,7 +83,7 @@ case $CHOICE in
             snap install auto-cpufreq
             sudo auto-cpufreq --install
             ;;
-        2)
+        "Installation of Face Recognition on this Linux Box.")
             echo "Installing of Howdy face recognition software and Video for Linux library."
             sudo apt install -y v4l-utils 
             v4l2-ctl --list-devices
@@ -115,7 +100,7 @@ case $CHOICE in
             echo Adding Face ID profile for your Linux system.
             sudo howdy add
             ;;
-        3)
+        "Installation of Remote Access to this box via NX and SSH.")
             echo "Installing NoMachine software for remote access."
             echo Please check for updates and apply them.
             sudo cp FILES/nomachine_7.7.4_1_amd64.deb $HOME:/temp/
@@ -125,8 +110,9 @@ case $CHOICE in
             sudo rm -rf $HOME:/temp/*
             echo 
             ;;
-esac
-
-echo
-echo The configuration is completed. Enjoy! :)
-echo 
+        "Quit")
+            break
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done
