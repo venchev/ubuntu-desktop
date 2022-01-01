@@ -80,7 +80,7 @@ do
 
             echo Installing of gnome-tweaks tool.
             sudo apt install -y gnome-tweaks
-            
+            ;;
         "Adding Power Management for hardware computers. Don't use in VMs"
             echo Installing of auto-cpufreq tool for power management.
             snap install auto-cpufreq
