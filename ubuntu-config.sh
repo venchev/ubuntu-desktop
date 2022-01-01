@@ -11,7 +11,7 @@ ip -4 a | grep inet
 echo
 echo
 echo Adding 15 seconds before activation of the script...
-echo with option for break (Ctrl-C) to stop now.
+echo with option for break [Ctrl-C] to stop now.
 echo
 sleep 15
 
