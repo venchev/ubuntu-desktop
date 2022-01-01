@@ -1,28 +1,22 @@
 #!/bin/bash
 clear
-echo
-echo
+sleep 2
 echo This script will install and configure resources for Ubuntu Linux for Desktop Usage.
-echo
 echo
 echo For excellent results, please open terminal in the GUI Desktop and run the script from there.
 echo
-echo
 echo This is necessary for graphical compatibility of some apps.
-echo
 echo
 echo Enjoy!
 echo
-echo Adding 10 seconds pause time before starting the actions.
+echo Adding 20 seconds pause time before starting the actions.
 echo
-echo
-echo If you want to stop the actions, press ctrl-C now OR wait the script to start!
-echo
+echo WARNING: If you want to stop the actions, press ctrl-C NOW - OR wait the script to start and complete the actions!
 echo
 echo
 sleep 10
 
-echo Starting the configuration of the system. Keep a patience and dont interrupt the installer.
+echo Starting the configuration of the system. Keep a patience and do NOT interrupt the installer.
 sleep 3
 
 echo Clean up all installer data, if any.
