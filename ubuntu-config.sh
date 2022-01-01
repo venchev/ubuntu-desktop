@@ -118,7 +118,7 @@ case $CHOICE in
         3)
             echo "Installing NoMachine software for remote access."
             echo Please check for updates and apply them.
-            sudo mv nomachine_7.7.4_1_amd64.deb $HOME:/temp/
+            sudo cp FILES/nomachine_7.7.4_1_amd64.deb $HOME:/temp/
             sudo dpkg -i $HOME:/temp/nomachine_7.7.4_1_amd64.deb
             echo 
             echo Cleaning up.
