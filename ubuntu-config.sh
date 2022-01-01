@@ -18,9 +18,7 @@ select opt in "${options[@]}"
 do
     case $opt in
         "Installation of Basic utilities.")
-            echo "Basic Utilities...preparing of the install process."
-            sudo mkdir -p $HOME:/temp/
-            cd $HOME:/temp/
+            echo "Basic Utilities...preparing of the install process.
             echo Adding 30 seconds pause time before starting the actions.
             echo
             echo WARNING: If you want to stop the actions, press ctrl-C NOW - OR wait the script to start and complete the actions!
@@ -103,7 +101,8 @@ do
         "Installation of Remote Access to this box via NX and SSH.")
             echo "Installing NoMachine software for remote access."
             echo Please check for updates and apply them.
-            sudo cp FILES/nomachine_7.7.4_1_amd64.deb $HOME:/temp/
+            sudo mkdir -p $HOME:/temp/
+            sudo cp -Rfp FILES/nomachine_7.7.4_1_amd64.deb $HOME:/temp/
             sudo dpkg -i $HOME:/temp/nomachine_7.7.4_1_amd64.deb
             echo 
             echo Cleaning up.
