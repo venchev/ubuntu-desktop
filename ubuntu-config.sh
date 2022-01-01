@@ -2,8 +2,16 @@
 echo
 echo
 echo This script will install and configure resources for Ubuntu Linux for Desktop Usage.
+echo For excellent results, please open terminal in the GUI Desktop and run the script from there.
+echo This is necessary for graphical compatibility of some apps.
 echo Enjoy!
 
+echo Adding 10 seconds pause time before starting the actions.
+echo If you want to stop the actions, press ctrl-C now OR wait the script to start!
+sleep 10
+
+echo Starting the configuration of the system. Keep a patience and dont interrupt the installer.
+sleep 3
 
 echo Updating the installer.
 sudo apt update -y  
@@ -68,6 +76,10 @@ sudo howdy config
 
 echo Adding Face ID profile for your Linux system.
 sudo howdy add
+
+echo Installing NoMachine software for remote access.
+echo Please check for updates and apply them.
+sudo dpkg -i nomachine_7.7.4_1_amd64.deb
 
 echo 
 echo
