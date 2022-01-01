@@ -1,105 +1,132 @@
 #!/bin/bash
-sudo mkdir -p $HOME:/temp/
-cd $HOME:/temp/
-sleep 2
+clear
 echo This script will install and configure resources for Ubuntu Linux for Desktop Usage.
-echo
 echo For excellent results, please open terminal in the GUI Desktop and run the script from there.
-echo
 echo This is necessary for graphical compatibility of some apps.
-echo
 echo Enjoy!
 echo
-echo Adding 20 seconds pause time before starting the actions.
 echo
-echo WARNING: If you want to stop the actions, press ctrl-C NOW - OR wait the script to start and complete the actions!
+echo Adding 15 seconds before activation of the script...
 echo
 echo
-sleep 10
+sleep 15
+HEIGHT=15
+WIDTH=40
+CHOICE_HEIGHT=4
+BACKTITLE="Backtitle here"
+TITLE="Title here"
 
-echo Starting the configuration of the system. Keep a patience and do NOT interrupt the installer.
-sleep 3
+MENU="Choose one of the following options:" 
+            
+OPTIONS=(1 "Installation of Basic utilities."
+         2 "Installation of Face Recognition on this Linux Box."
+         3 "Installation of Remote Access to this box via NX and SSH.")
 
-echo Clean up all installer data, if any.
-sudo rm -vf /var/lib/apt/lists/*
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
 
-echo Updating the installer with the latest fresh dist lists.
-sudo apt update -y  
+clear
+case $CHOICE in
+        1)
+            echo "Basic Utilities...preparing of the install process."
+            sudo mkdir -p $HOME:/temp/
+            cd $HOME:/temp/
+            echo Adding 30 seconds pause time before starting the actions.
+            echo
+            echo WARNING: If you want to stop the actions, press ctrl-C NOW - OR wait the script to start and complete the actions!
+            echo
+            echo
+            sleep 10
 
-echo Installing of building modules in case they are needed of some pkg.
-sudo apt install -y build-essential
+            echo Starting the configuration of the system. Keep a patience and do NOT interrupt the installer.
+            sleep 3
 
-echo Installing of Midnight Commander.
-sudo apt install -y mc
+            echo Clean up all installer data, if any.
+            sudo rm -vf /var/lib/apt/lists/*
 
-echo Installing of Network Utilities - the old school way .
-sudo apt install -y net-tools
+            echo Updating the installer with the latest fresh dist lists.
+            sudo apt update -y  
 
-echo Installing of Git client.
-sudo apt install -y git
+            echo Installing of building modules in case they are needed of some pkg.
+            sudo apt install -y build-essential
 
-echo Installing of Lynx console browser.
-sudo apt install -y lynx
+            echo Installing of Midnight Commander.
+            sudo apt install -y mc
 
-echo Installing of Vim console editor.
-sudo apt install -y vim
+            echo Installing of Network Utilities - the old school way .
+            sudo apt install -y net-tools
 
-echo Installing of Wget downloader.
-sudo apt install -y wget
+            echo Installing of Git client.
+            sudo apt install -y git
 
-echo Installing of curl utility.
-sudo apt install -y curl
+            echo Installing of Lynx console browser.
+            sudo apt install -y lynx
 
-echo Installing of nmap port scanner.
-sudo apt install -y nmap
+            echo Installing of Vim console editor.
+            sudo apt install -y vim
 
-echo Installing of Unzip tool.
-sudo apt install -y unzip
+            echo Installing of Wget downloader.
+            sudo apt install -y wget
 
-echo Installing of SSH access to the box.
-sudo apt install -y openssh-server
+            echo Installing of curl utility.
+            sudo apt install -y curl
 
-echo Installing of vlc multimedia tool.
-sudo apt install -y vlc
+            echo Installing of nmap port scanner.
+            sudo apt install -y nmap
 
-echo Installing of TimeShift snapshot backup tool.
-sudo apt install -y timeshift
+            echo Installing of Unzip tool.
+            sudo apt install -y unzip
 
-echo Installing of gnome-tweaks tool.
-sudo apt install -y gnome-tweaks
+            echo Installing of SSH access to the box.
+            sudo apt install -y openssh-server
 
-echo Installing of auto-cpufreq tool for power management.
-snap install auto-cpufreq
-sudo auto-cpufreq --install
+            echo Installing of vlc multimedia tool.
+            sudo apt install -y vlc
 
-echo Installing of Howdy face recognition software and Video for Linux library.
-sudo apt install -y v4l-utils 
-v4l2-ctl --list-devices
-sleep 5
-sudo add-apt-repository ppa:boltgolt/howdy
-sudo apt update -y
-sudo apt install -y howdy
-sleep 5
+            echo Installing of TimeShift snapshot backup tool.
+            sudo apt install -y timeshift
 
-echo Configuring the Howdy Software.
-echo 
-echo Replace MANUALLY device_path directive to be /dev/video0 usually or with what is 
-echo detected in the v4l phase.
-sudo howdy config
+            echo Installing of gnome-tweaks tool.
+            sudo apt install -y gnome-tweaks
 
-echo Adding Face ID profile for your Linux system.
-sudo howdy add
+            echo Installing of auto-cpufreq tool for power management.
+            snap install auto-cpufreq
+            sudo auto-cpufreq --install
+            ;;
+        2)
+            echo "Installing of Howdy face recognition software and Video for Linux library."
+            sudo apt install -y v4l-utils 
+            v4l2-ctl --list-devices
+            sleep 5
+            sudo add-apt-repository ppa:boltgolt/howdy
+            sudo apt update -y
+            sudo apt install -y howdy
+            sleep 5
+            echo Configuring the Howdy Software.
+            echo 
+            echo Replace MANUALLY device_path directive to be /dev/video0 usually or with what is 
+            echo detected in the v4l phase.
+            sudo howdy config
+            echo Adding Face ID profile for your Linux system.
+            sudo howdy add
+            ;;
+        3)
+            echo "Installing NoMachine software for remote access."
+            echo Please check for updates and apply them.
+            sudo mv nomachine_7.7.4_1_amd64.deb $HOME:/temp/
+            sudo dpkg -i $HOME:/temp/nomachine_7.7.4_1_amd64.deb
+            echo 
+            echo Cleaning up.
+            sudo rm -rf $HOME:/temp/*
+            echo 
+            ;;
+esac
 
-echo Installing NoMachine software for remote access.
-echo Please check for updates and apply them.
-sudo mv nomachine_7.7.4_1_amd64.deb $HOME:/temp/
-sudo dpkg -i $HOME:/temp/nomachine_7.7.4_1_amd64.deb
-echo 
-echo Cleaning up.
-sudo rm -rf $HOME:/temp/*
-echo 
 echo
 echo The configuration is completed. Enjoy! :)
 echo 
-
- 
