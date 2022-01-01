@@ -1,5 +1,6 @@
 #!/bin/bash
-clear
+mkdir -p $HOME:/temp/
+cd $HOME:/temp/
 sleep 2
 echo This script will install and configure resources for Ubuntu Linux for Desktop Usage.
 echo
@@ -91,8 +92,11 @@ sudo howdy add
 
 echo Installing NoMachine software for remote access.
 echo Please check for updates and apply them.
-sudo dpkg -i nomachine_7.7.4_1_amd64.deb
-
+sudo mv nomachine_7.7.4_1_amd64.deb $HOME:/temp/
+sudo dpkg -i $HOME:/temp/nomachine_7.7.4_1_amd64.deb
+echo 
+echo Cleaning up.
+sudo rm -rf $HOME:/temp/*
 echo 
 echo
 echo The configuration is completed. Enjoy! :)
