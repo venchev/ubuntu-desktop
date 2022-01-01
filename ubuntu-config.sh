@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdir -p $HOME:/temp/
+sudo mkdir -p $HOME:/temp/
 cd $HOME:/temp/
 sleep 2
 echo This script will install and configure resources for Ubuntu Linux for Desktop Usage.
