@@ -1,3 +1,3 @@
-# This repository contains scripts and resources for configuration of Ubuntu Linux for general desktop usage purpose.
+# Scripts and resources for configuration of Ubuntu Linux for general desktop usage.
 # Use with a lot of fun and joy!
 
