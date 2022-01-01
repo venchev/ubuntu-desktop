@@ -6,10 +6,10 @@ echo This is necessary for graphical compatibility of some apps.
 echo Enjoy!
 echo
 echo
-echo Adding 15 seconds before activation of the script...
+echo Adding 10 seconds before activation of the script...
 echo
 echo
-sleep 15
+sleep 10
 
 
 PS3='Please enter your choice: '
@@ -19,14 +19,18 @@ do
     case $opt in
         "Installation of Basic utilities.")
             echo Basic Utilities...preparing of the install process.
-            echo Adding 30 seconds pause time before starting the actions.
+            echo Adding 20 seconds pause time before starting the actions.
             echo
             echo WARNING: If you want to stop the actions, press ctrl-C NOW - OR wait the script to start and complete the actions!
             echo
+            echo The configured IP address of this host is:
+            ip -4 a | grep inet
             echo
+            echo
+            echo Using this for network activation of resources...
             sleep 10
 
-            echo Starting the configuration of the system. Keep a patience and do NOT interrupt the installer.
+            echo Starting the configuration of the system. Keep a patience and DO NOT interrupt the installer.
             sleep 3
 
             echo Clean up all installer data, if any.
