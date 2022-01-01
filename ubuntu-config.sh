@@ -1,19 +1,29 @@
 #!/bin/bash
 clear
-echo This script will install and configure resources for Ubuntu Linux for Desktop Usage.
-echo For excellent results, please open terminal in the GUI Desktop and run the script from there.
-echo This is necessary for graphical compatibility of some apps.
-echo Enjoy!
+echo Ubuntu Linux desktop configuration script.
+echo Please run it in terminal opened on the GUI Desktop.
+echo Otherwise not all apps will be correctly installed,
+echo as they require graphical shell to initialize properly.
 echo
 echo
-echo Adding 10 seconds before activation of the script...
+echo The configured IP address of this host is:
+ip -4 a | grep inet
 echo
 echo
-sleep 10
+echo Adding 15 seconds before activation of the script...
+echo with option for break (Ctrl-C) to stop now.
+echo
+sleep 15
 
 
-PS3='Please enter your choice: '
-options=("Installation of Basic utilities." "Installation of Face Recognition on this Linux Box." "Installation of Remote Access to this box via NX and SSH." "Adding Power Management - not for VMs" "Quit")
+echo Please select from the options below:
+echo
+echo
+options=("Installation of Basic utilities." 
+         "Installation of Face Recognition on this Linux Box." 
+         "Installation of Remote Access to this box via NX and SSH." 
+         "Adding Power Management - not for VMs" 
+         "Quit")
 select opt in "${options[@]}"
 do
     case $opt in
@@ -23,8 +33,7 @@ do
             echo
             echo WARNING: If you want to stop the actions, press ctrl-C NOW - OR wait the script to start and complete the actions!
             echo
-            echo The configured IP address of this host is:
-            ip -4 a | grep inet
+            
             echo
             echo
             echo Using this for network activation of resources...
