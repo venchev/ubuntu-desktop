@@ -31,7 +31,7 @@ sudo apt install -y build-essential
 echo Installing of Midnight Commander.
 sudo apt install -y mc
 
-echo Installing of Network Utilities (the old school).
+echo Installing of Network Utilities << the old school >>.
 sudo apt install -y net-tools
 
 echo Installing of Git client.
