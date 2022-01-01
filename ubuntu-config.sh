@@ -13,8 +13,14 @@ sleep 10
 echo Starting the configuration of the system. Keep a patience and dont interrupt the installer.
 sleep 3
 
-echo Updating the installer.
+echo Clean up all installer data, if any.
+sudo rm -vf /var/lib/apt/lists/*
+
+echo Updating the installer with the latest fresh dist lists.
 sudo apt update -y  
+
+echo Installing of building modules in case they are needed of some pkg.
+sudo apt install -y build-essential
 
 echo Installing of Midnight Commander.
 sudo apt install -y mc
