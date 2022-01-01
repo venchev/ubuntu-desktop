@@ -29,20 +29,17 @@ do
     case $opt in
         "Installation of Basic utilities.")
             echo Basic Utilities...preparing of the install process.
-            echo Adding 20 seconds pause time before starting the actions.
             echo
-            echo WARNING: If you want to stop the actions, press ctrl-C NOW - OR wait the script to start and complete the actions!
             echo
-            
             echo
             echo
             echo Using this for network activation of resources...
             sleep 10
 
             echo Starting the configuration of the system. Keep a patience and DO NOT interrupt the installer.
-            sleep 3
+            sleep 5
 
-            echo Clean up all installer data, if any.
+            echo Cleaning up all old cached installer data, if any.
             sudo rm -vf /var/lib/apt/lists/*
 
             echo Updating the installer with the latest fresh dist lists.
